@@ -40,7 +40,7 @@ def validate_order(order, products, customers):
             continue
 
         quantity = item.get("quantity")
-        if type(quantity) is not int:
+        if not isinstance(quantity, int) or isinstance(quantity, bool):
             errors.append(f"Invalid quantity for {product['name']}")
         elif quantity <= 0:
             errors.append(f"Quantity must be positive for {product['name']}")
